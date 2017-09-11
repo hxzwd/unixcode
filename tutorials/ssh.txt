@@ -1,0 +1,6 @@
+ssh login@hostname
+(ssh login@host)
+
+scp filename login@hostname:destination
+(scp /home/hjk/info.txt login@host:~/info/info.txt)
+(scp -r /home/hjk/source_dir/ login@host:"/home/root/downloads")

@@ -1,0 +1,14 @@
+#sed <options> <file>
+echo "Some long text" | sed 's/text/destination text/'
+echo "ABC 123" | sed -e 's/ABC/QWE/; s/123/000/'
+echo "/bin/bash" | sed 's/\/bin\/bash/\/bin\/csh/'
+
+touch myfile.txt
+echo first string >> myfile.txt
+echo second string >> myfile.txt
+echo third string >> myfile.txt
+echo 4 string >> myfile.txt
+sed '2,3s/string/000/' myfile.txt	#2,3 - strings in myfile.txt for proccessing
+sed '3d' myfile.txt			#Delete 3 string from myfile.txt
+sed '2,$d' myfile.txt			#From 2 to end of myfile.txt
+rm myfile.txt

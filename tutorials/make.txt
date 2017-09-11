@@ -1,0 +1,70 @@
+Project:
+	main.cpp
+	hello.cpp
+	factorial.cpp
+	functions.h
+	Makefile
+
+Makefile[1]:
+	all: hello
+	
+	hello: main.o factorial.o hello.o
+		g++ main.o factorial.o hello.o -o hello
+
+	main.o: main.cpp
+		g++ -c main.cpp
+
+	factorial.o: factorial.cpp
+		g++ -c factorial.cpp
+
+	hello.o: hello.cpp
+		g++ -c hello.cpp
+
+	clean:
+		rm -rf *.o hello
+
+
+Makefile[2]:
+	CC=g++
+	CFLAGS=-c -Wall
+
+	all: hello
+	
+	hello: main.o factorial.o hello.o
+		$(CC) main.o factorial.o hello.o -o hello
+
+	main.o: main.cpp
+		$(CC) $(CFLAGS) main.cpp
+
+	factorial.o: factorial.cpp
+		$(CC) $(CFLAGS) factorial.cpp
+
+	hello.o: hello.cpp
+		$(CC) $(CFLAGS) hello.cpp
+
+	clean:
+		rm -rf *.o hello
+
+Makefile[3]:
+	CC=g++
+	CFLAGS=-c -Wall
+	LDFLAGS=
+	SOURCES=main.cpp hello.cpp factorial.cpp
+	OBJECTS=$(SOURCES:.cpp=.o)
+	EXECUTABLE=hello
+
+	all: $(SOURCES) $(EXECUTABLE)
+
+	$(EXECUTABLE): $(OBJECTS)
+		$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+
+	.cpp.o:
+		$(CC) $(CFLAGS) $< -o $@
+
+Execute:
+	make
+	(make -f Makefile)
+
+Syntax:
+	Target: Dependese
+	[tab] Command

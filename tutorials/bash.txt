@@ -1,0 +1,85 @@
+#!/bin/bash
+#(#!/shell/path)
+
+VARIABLE="test"
+hello="5hello"
+
+echo $hello		#5hello
+echo ${hello}		#5hello
+
+echo "$hello"		#5hello
+echo "${hello}"		#5hello
+
+echo '$hello'		#'$hello'
+
+let 'a = 5 * 5 * 5 * (5 - 1)'
+echo "a is $a"		#a is 500
+(( b = 100/5 ))
+echo "b is $b"		#b is 20
+
+a=`ls -la`		#files in a
+b=$(ps -la)		#proccess in b
+echo
+echo $a
+echo
+echo $b
+
+echo $0			#script name
+echo $1			#first argument
+
+for arg in "$@"
+do
+	echo "Argument: $arg"
+done
+
+echo $#			#Num of arguments
+echo $$			#Own PID
+echo $PPID		#Parent PID
+
+
+a="haha"
+b="haha"
+
+if [[ "$a" == "$b" ]]
+then
+	echo "True"
+else
+	echo "False"
+fi
+
+if (( 5 == 5 ))
+then
+	echo "True"
+else
+	echo "False"
+fi
+
+
+echo $RANDOM		#Random number
+
+str="abcdefgh0123456789"
+echo ${#str}		#String length
+echo `expr match "$str" : '$regexp_pattern'`	#Substring length
+echo `expr index "$str" substring`		#Substring index
+echo ${str:8}					#Substring from 8 pos
+
+trap "echo Trapped Ctrl-C" SIGINT
+counter=1
+while (( $counter <= 3 ))
+do
+	echo "Counter: $counter"
+	sleep 1
+	counter=$(( $counter + 1 ))
+done
+
+trap "echo Goodbye..." EXIT
+trap -- SIGINT
+
+function myfunc {
+	echo "My func"
+}
+
+myfunc
+
+TARGET_DIR=$HOME
+du -Sh $TARGET_DIR | sort -rn | sed '{11,$D; =}' | sed 'N; s/\n/ /' | awk '{printf $1 ":" "\t" $2 "\t" $3 "\n"}'

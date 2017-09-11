@@ -1,0 +1,42 @@
+vi <textfile>
+
+h - Cursor on left
+l - Cursor on right
+j - Cursor on bottom
+k - Cursor on top
+
+0 - At first character of string
+$ - At last character of string
+
+w - To first character of next word
+b - To first character of previous word
+W - As w for long words
+B - As b for long words
+
+() - At first(last) character of sentence
+{} - At first(last) character of paragraph
+
+:q! - Exit without saving changes
+:w <filename> - Save text in <filename>
+:x - Save and exit
+
+x - Remove symbol in position on cursor
+J - Add previous string at end of current string
+dd - Remove current string
+d<Moving key> - Remove text from current position to moving position
+
+u - Undo
+i - Editing mode
+a - Editing mode
+
+A - Editing from end of current string
+I - Editing from start of current string
+o - Create empty string after current string
+O - Create empty string befor current string
+
+Ctrl-d - Jump tab left
+Ctrl-t - Jump tab right
+
+:s/regexp/replacement/ - Replace text in current string for first match
+:s/regexp/replacement/g - Replace text in current string for all matches
+:%s/regexp/replacement/g - Replace text in all file

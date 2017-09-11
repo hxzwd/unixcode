@@ -1,0 +1,6 @@
+wget -P /path/for/save ftp://ftp.example.org/some_file.zip
+wget ftp://<login>:<password>@ftp.example.org/some_file.zip
+wget -q www.google.com
+wget -q www.google.com -O -
+wget -r ftp://<login>:<password>@ftp.example.org/some/dir/*
+curl www.google.com
